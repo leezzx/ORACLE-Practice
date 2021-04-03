@@ -1,0 +1,15 @@
+INSERT INTO MEMBER(ID, PWD) VALUES('newlec', '111'); -- (ID, PWD)를 안쓰면 모든 VALUES를 입력 해야함
+INSERT INTO MEMBER(ID, PWD) VALUES('dragon', '111');
+
+SELECT * FROM MEMBER; -- 모든 결과 보기
+SELECT id, name, pwd FROM MEMBER; -- 선택된 결과 보기 (대소문자 구분 안함)
+SELECT ID AS user_id, name, PWD FROM MEMBER; -- ID를 user_id라는 이름으로 보이게 출력, AS 생략가능
+SELECT ID "user_id", NAME, PWD FROM MEMBER; -- ""사용 시 대소문자 구분
+
+UPDATE MEMBER SET PWD='222'; -- 모든 PWD 변경
+UPDATE MEMBER SET PWD='111' WHERE ID='dragon'; -- 특정 PWD 변경
+UPDATE MEMBER SET PWD='333', NAME='손오공' WHERE ID='dragon';
+
+INSERT INTO MEMBER(ID, PWD) VALUES('test', '111');
+
+DELETE MEMBER WHERE ID='test'; -- 특정행 삭제, WHERE 안쓰면 전체 내용 삭제

@@ -1,0 +1,31 @@
+CREATE TABLE NOTICE
+(
+    ID         	NUMBER,
+    TITLE      	NVARCHAR2(100),
+    WRITER_ID  	NVARCHAR2(50),
+    CONTENT    	CLOB, -- CLOB : 4GB 까지 가능한 문자열
+    REGDATE    	TIMESTAMP, -- TIMESTAMP : 현재날짜 (시, 분, 초)
+    HIT        	NUMBER,
+    FILES      	NVARCHAR2(1000)
+);
+
+CREATE TABLE "COMMENT" -- COMMENT는 예약어이기 때문에 문자로 인식하게 처리한다, 부적합 키워드도 가능
+(
+    ID          	NUMBER,
+    CONTENT     	NVARCHAR2(2000),
+    REGDATE     	TIMESTAMP,
+    WRITE_ID    	NVARCHAR2(50),
+    NOTICE_ID   	NUMBER
+);
+
+CREATE TABLE ROLE
+(
+    ID              	VARCHAR2(50),
+    DISCRIPTION    NVARCHAR2(500)
+);
+
+CREATE TABLE MEMBER_ROLE
+(
+    MEMBER_ID   	NVARCHAR2(50),
+    ROLE_ID     	VARCHAR2(50)
+);
