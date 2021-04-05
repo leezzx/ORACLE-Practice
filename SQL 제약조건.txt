@@ -1,0 +1,31 @@
+-- 도메인 제약조건 : NOT NULL, DEFAULT, CHECK
+
+-- NOT NULL : 필수로 입력 해야하는 값
+
+-- DETAULT : 직접 입력할 필요 없는 기본값 지정
+
+-- CHECK 제약조건 : 값을 어떻게 넣을지 제시함
+
+-- 테이블 편집 -> 제약조건 -> 새 검사 제약 조건 -> 검사조건에 PHONE LIKE '010-____-____'입력
+
+
+
+-- 정규식을 사용한 제약조건, 코드로
+
+ALTER TABLE MEMBER
+DROP CONSTRAINT MEMBER_PHONE_CHK1; -- 해당 제약조건 삭제
+
+SELECT * FROM USER_CONSTRAINTS
+WHERE TABLE_NAME = 'MEMBER'; -- 제약조건 삭제 확인
+
+ALTER TABLE MEMBER
+ADD CONSTRAINT MEMBER_PHONE_CHK1
+CHECK(REGEXP_LIKE(PHONE, '^01[01]-\d{3,4}-\d{4}$')); -- 새 제약조건 추가
+
+
+
+-- ENTITY 제약조건
+
+-- PRIMARY KEY : 기본키, 중복불허, NULL 불허 편집기에서 프라이머리 키로 지정
+
+-- UNIQUE : NULL허용, 중복 불허, 편집기 제약조건 -> 새 고유 제약 조건 -> 사용 가능한 열에서 선택된 열로 추가
